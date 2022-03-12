@@ -1,0 +1,411 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Sprites/Player_Idle.png" type="Texture" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://tile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Camera2D.gd" type="Script" id=5]
+[ext_resource path="res://Coin.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://PlayerFall.tscn" type="PackedScene" id=8]
+[ext_resource path="res://PlayerFall.gd" type="Script" id=9]
+[ext_resource path="res://Trphy.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Trphy.gd" type="Script" id=11]
+[ext_resource path="res://Sprites/background.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Player_Jump.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Player_Walk2.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Player_Walk1.png" type="Texture" id=15]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 27.0
+height = 12.0
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Control
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+onready var scoreText = get_node(\"ScoreText\")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	 scoreText.text = \"0\"
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func set_score_text (score):
+	scoreText.text = str(score)
+	
+"
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer2"]
+z_index = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/Node2D"]
+margin_left = -5.0
+margin_top = -5.0
+margin_right = 1075.0
+margin_bottom = 785.0
+texture = ExtResource( 12 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="AnimatedSprite" parent="Player"]
+frames = SubResource( 3 )
+animation = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( -0.5, 14.7 )
+shape = SubResource( 1 )
+
+[node name="tile" parent="." instance=ExtResource( 3 )]
+position = Vector2( 34, 566 )
+
+[node name="tile2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 94, 566 )
+
+[node name="tile3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 158, 566 )
+
+[node name="tile4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 222, 566 )
+
+[node name="tile5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 285, 566 )
+
+[node name="tile6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 347, 566 )
+
+[node name="tile7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 411, 566 )
+
+[node name="tile8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 474, 566 )
+
+[node name="tile9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 534, 566 )
+
+[node name="tile10" parent="." instance=ExtResource( 3 )]
+position = Vector2( 594, 566 )
+
+[node name="tile20" parent="." instance=ExtResource( 3 )]
+position = Vector2( 832, 468 )
+
+[node name="tile21" parent="." instance=ExtResource( 3 )]
+position = Vector2( 894, 468 )
+
+[node name="tile22" parent="." instance=ExtResource( 3 )]
+position = Vector2( 958, 468 )
+
+[node name="tile23" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1021, 468 )
+
+[node name="tile24" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1081, 468 )
+
+[node name="tile25" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1145, 468 )
+
+[node name="tile56" parent="." instance=ExtResource( 3 )]
+position = Vector2( 317, 272 )
+
+[node name="tile57" parent="." instance=ExtResource( 3 )]
+position = Vector2( 380, 272 )
+
+[node name="tile58" parent="." instance=ExtResource( 3 )]
+position = Vector2( 440, 272 )
+
+[node name="tile59" parent="." instance=ExtResource( 3 )]
+position = Vector2( 504, 272 )
+
+[node name="tile60" parent="." instance=ExtResource( 3 )]
+position = Vector2( 679, 308 )
+
+[node name="tile61" parent="." instance=ExtResource( 3 )]
+position = Vector2( 742, 308 )
+
+[node name="tile62" parent="." instance=ExtResource( 3 )]
+position = Vector2( 802, 308 )
+
+[node name="tile63" parent="." instance=ExtResource( 3 )]
+position = Vector2( 866, 308 )
+
+[node name="tile26" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1218, 551 )
+
+[node name="tile27" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1280, 551 )
+
+[node name="tile28" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1344, 551 )
+
+[node name="tile29" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1407, 551 )
+
+[node name="tile30" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1467, 551 )
+
+[node name="tile31" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1531, 551 )
+
+[node name="tile32" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1698, 588 )
+
+[node name="tile33" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1760, 588 )
+
+[node name="tile34" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1824, 588 )
+
+[node name="tile35" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1887, 588 )
+
+[node name="tile36" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1947, 588 )
+
+[node name="tile37" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2011, 588 )
+
+[node name="tile38" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2074, 588 )
+
+[node name="tile39" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2136, 588 )
+
+[node name="tile40" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2200, 588 )
+
+[node name="tile41" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2263, 588 )
+
+[node name="tile42" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2323, 588 )
+
+[node name="tile43" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2387, 588 )
+
+[node name="tile44" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1827, 414 )
+
+[node name="tile45" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1887, 414 )
+
+[node name="tile46" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1951, 414 )
+
+[node name="tile47" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2093, 329 )
+
+[node name="tile48" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2153, 329 )
+
+[node name="tile49" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2217, 329 )
+
+[node name="tile50" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2376, 408 )
+
+[node name="tile51" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2436, 408 )
+
+[node name="tile52" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2500, 408 )
+
+[node name="tile53" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2689, 560 )
+
+[node name="tile54" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2749, 560 )
+
+[node name="tile55" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2813, 560 )
+
+[node name="tile11" parent="." instance=ExtResource( 3 )]
+position = Vector2( 658, 566 )
+
+[node name="tile12" parent="." instance=ExtResource( 3 )]
+position = Vector2( 721, 566 )
+
+[node name="tile13" parent="." instance=ExtResource( 3 )]
+position = Vector2( 783, 566 )
+
+[node name="tile14" parent="." instance=ExtResource( 3 )]
+position = Vector2( 847, 566 )
+
+[node name="tile15" parent="." instance=ExtResource( 3 )]
+position = Vector2( 84, 357 )
+
+[node name="tile16" parent="." instance=ExtResource( 3 )]
+position = Vector2( 147, 357 )
+
+[node name="tile17" parent="." instance=ExtResource( 3 )]
+position = Vector2( 211, 357 )
+
+[node name="tile18" parent="." instance=ExtResource( 3 )]
+position = Vector2( 185, 502 )
+
+[node name="tile19" parent="." instance=ExtResource( 3 )]
+position = Vector2( 722, 503 )
+
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
+position = Vector2( 249, 500 )
+speed = 200
+moveDist = 450
+
+[node name="Enemy2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1700, 520 )
+speed = 300
+moveDist = 520
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, 300 )
+current = true
+script = ExtResource( 5 )
+
+[node name="Coin" parent="." instance=ExtResource( 6 )]
+position = Vector2( 190, 291 )
+
+[node name="Coin2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 415, 208 )
+
+[node name="Coin3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 681, 246 )
+
+[node name="Coin4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 673, 495 )
+
+[node name="Coin5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 955, 412 )
+
+[node name="tile64" parent="." instance=ExtResource( 3 )]
+position = Vector2( -343, 567 )
+
+[node name="tile70" parent="." instance=ExtResource( 3 )]
+position = Vector2( -407, 567 )
+
+[node name="tile71" parent="." instance=ExtResource( 3 )]
+position = Vector2( -469, 567 )
+
+[node name="tile72" parent="." instance=ExtResource( 3 )]
+position = Vector2( -511, 567 )
+
+[node name="tile73" parent="." instance=ExtResource( 3 )]
+position = Vector2( -512, 528 )
+
+[node name="tile74" parent="." instance=ExtResource( 3 )]
+position = Vector2( -512, 482 )
+
+[node name="tile75" parent="." instance=ExtResource( 3 )]
+position = Vector2( -512, 440 )
+
+[node name="tile76" parent="." instance=ExtResource( 3 )]
+position = Vector2( -512, 399 )
+
+[node name="tile77" parent="." instance=ExtResource( 3 )]
+position = Vector2( -512, 357 )
+
+[node name="tile78" parent="." instance=ExtResource( 3 )]
+position = Vector2( -512, 315 )
+
+[node name="tile79" parent="." instance=ExtResource( 3 )]
+position = Vector2( -512, 280 )
+
+[node name="tile80" parent="." instance=ExtResource( 3 )]
+position = Vector2( -512, 238 )
+
+[node name="tile81" parent="." instance=ExtResource( 3 )]
+position = Vector2( -512, 196 )
+
+[node name="tile82" parent="." instance=ExtResource( 3 )]
+position = Vector2( -512, 155 )
+
+[node name="tile83" parent="." instance=ExtResource( 3 )]
+position = Vector2( -512, 113 )
+
+[node name="tile85" parent="." instance=ExtResource( 3 )]
+position = Vector2( -512, 70 )
+
+[node name="tile87" parent="." instance=ExtResource( 3 )]
+position = Vector2( -512, 37 )
+
+[node name="tile88" parent="." instance=ExtResource( 3 )]
+position = Vector2( -512, 18 )
+
+[node name="tile65" parent="." instance=ExtResource( 3 )]
+position = Vector2( -281, 567 )
+
+[node name="tile66" parent="." instance=ExtResource( 3 )]
+position = Vector2( -217, 567 )
+
+[node name="tile67" parent="." instance=ExtResource( 3 )]
+position = Vector2( -154, 567 )
+
+[node name="tile68" parent="." instance=ExtResource( 3 )]
+position = Vector2( -94, 567 )
+
+[node name="tile69" parent="." instance=ExtResource( 3 )]
+position = Vector2( -30, 567 )
+
+[node name="Coin6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1284, 484 )
+
+[node name="Coin7" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1747, 525 )
+
+[node name="Coin8" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1877, 348 )
+
+[node name="Coin9" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2451, 344 )
+
+[node name="PlayerFall2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2139, 687 )
+
+[node name="PlayerFall" parent="." instance=ExtResource( 8 )]
+position = Vector2( 767, 673 )
+
+[node name="Trophy" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2826, 497 )
+script = ExtResource( 11 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 7 )]
+script = SubResource( 2 )
+
+[connection signal="body_entered" from="Enemy" to="Player" method="_on_Enemy_body_entered"]
+[connection signal="body_entered" from="Enemy" to="Enemy" method="_on_Enemy_body_entered"]
+[connection signal="body_entered" from="Enemy2" to="Enemy2" method="_on_Enemy2_body_entered"]
+[connection signal="body_entered" from="Trophy" to="Trophy" method="_on_Trophy_body_entered"]
